@@ -42,6 +42,12 @@ undo changes --unstagging files - git reset HEAD filename
 
 git commit --amend -m "text" -- undoing changes in commit(last commit)
 
+git revert shavalue of the commit
+
+git reset - soft,mixed,hard
+
+git clean
+
 
 
 
