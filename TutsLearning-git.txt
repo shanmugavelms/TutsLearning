@@ -30,3 +30,19 @@ git status
 
 git diff
 
+git rm filename.txt , then commit
+
+git mv file1 file2
+
+git commit -am "msg"  ---to skip add . >>>use only for file modifications/ not for file add or remove
+
+git checkout -- file/folder --- double dash indicates its file or folder( checkout is multipurpose cmd as it is used for branches)
+
+undo changes --unstagging files - git reset HEAD filename
+
+git commit --amend -m "text" -- undoing changes in commit(last commit)
+
+
+
+
+
