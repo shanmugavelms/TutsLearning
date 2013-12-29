@@ -48,6 +48,57 @@ git reset - soft,mixed,hard
 
 git clean
 
+add .gitignore file to ignore the files-- *.csv,!test.csv ....folders
+--- ignore compiled source code,packages, logs,compressed files etc
+
+
+ignoring files globally - git config --global core.excludesfile path of .gitignore_globale file
+
+
+!!!!!!!!!!!!!!!!!!!!!! . refers to curent dir  .. refers to previous dir in unix (ls al) !!!!!!!!!!!!!!!!!!!!!!!!!!
+
+tracking empty directories - add empty file in it....eg .gitkeep
+
+viewing commit information - git show sha ID
+
+creating branch - git branch new_feature
+
+switching branch - git checkout brancn name
+
+creating and switching branch - git checkout -b shorten_title
+
+comparing branches - git diff --color-words new_feature..shorten_title , git branch --merged
+
+renaming the branch - git branch -m name name2
+
+deleting branch -git branch -d branch_to_delete
+
+merging - git merge branchname ...git merge -no-ff branchname
+
+--no-ff -----no fast forward because the merge does not have new commit(no details in log)
+
+resolving merge conflit ---> after clearing error give git commit only
+--- merge often to avoid conflicts
+
+stashing - temp storing - git stach save "msg"
+
+git stash list
+git stash pop stach@{0}
+
+
+create the repo in github
+in git bash -> git remote -> git remote add origin https://github.com/shanmugavelms/TutsLearning.git
+
+git remote rm  origin - for removing
+
+
+
+
+
+ 
+
+
+
 
 
 
