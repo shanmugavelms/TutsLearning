@@ -88,9 +88,16 @@ git stash pop stach@{0}
 
 create the repo in github
 in git bash -> git remote -> git remote add origin https://github.com/shanmugavelms/TutsLearning.git
+git pull -u origin master ----u for tracking
 
 git remote rm  origin - for removing
 
+
+
+git clone url
+git fetch origin master
+
+git pull = git fetch + git merge
 
 
 
