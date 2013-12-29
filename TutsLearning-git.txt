@@ -1,0 +1,13 @@
+---------------------------------------------------------------------------git -----------------------------------------------------------------------------
+
+configurations:
+
+git config --global user.name ="vel"
+user.emai
+core.editer
+color.ui true
+
+git config --list
+
+git init
+

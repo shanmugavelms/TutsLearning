@@ -1,0 +1,46 @@
+--------------------------------------------------------------Puppet - configuration management tool-----------------------------------------------------
+
+You don't give commands, such as "Do this, then do that." Rather, you describe how things
+should be, and let Puppet take care of making it happen. These are two quite different kinds
+of programming. The first (procedural style) is the traditional model used by languages, such
+as C, Python, shell, and so on. Puppet's is called declarative style because you declare what
+the end result should be, rather than specifying the steps to get there.
+
+----------->>>> declarative lang 
+
+
+1)Keeping the configuration synchronized
+2)Repeating changes across many servers
+3)Coping with different platforms - no need to know diferent commands
+4)Version control and history
+
+
+>>>>>>>>ubuntu@demo:~$ puppet apply site.pp
+
+
+node declaration ("node" is the Puppet term for an individual machine
+that has a Puppet configuration). A node declaration looks like this:
+node NODENAME {
+RESOURCE
+RESOURCE
+...
+}
+
+
+>>>>>>>>>apt-cache policy nginx - to get version
+
+
+Puppet identifies the
+cron jobs it's managing by the Puppet Name comment above each job.
+So, as the warning suggests, don't remove or edit these comments or
+Puppet will think the job is missing and add a new copy of it.
+
+
+You can get a quick overview of what Puppet is doing on a given run by using the
+--summarize flag to puppet apply
+
+The --noop flag does exactly this. Noop stands for no-operation
+
+Running Puppet with the --debug flag will not produce as much detail as a report, but still
+gives you much more information than a normal Puppet run.
+
