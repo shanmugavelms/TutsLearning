@@ -11,3 +11,22 @@ git config --list
 
 git init
 
+git log
+
+git log -n 2 --to show 2 commits
+
+git log --since=2013-12-29
+
+git log --until=
+
+git log --author="vel"
+
+git log --grep="text"
+
+
+working -> staging index -> repo
+
+git status
+
+git diff
+
