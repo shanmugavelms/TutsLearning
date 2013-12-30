@@ -1,0 +1,60 @@
+--------------------------------------Installing VM and configuring------------------------------------------------
+
+system32/drivers/etc/hosts --- add 127.0.0.1 sandbox.dev
+
+In VM settings -->storage -->IDE controller -> Empty -> choose Vm Image 
+
+network -> NAT --> port forwarding --> hhtp tcp 8080 80 mrsql tcp 9306 3306 ssh tcp 2222 22
+
+shared folder -> Auto mount
+
+ssh -ljpeck -p 2222 sandbox.dev
+
+head and tail to show start and end of the file.
+
+sudo apt-get -y updrade --> to say yes for all packages
+
+
+sudo apt-get -q -y install build-essential module-assistant linux-headers-$(uname - r) dkms zip unzip
+
+sudo mount /dev/cdrom /media/cdrom
+
+
+sudo sh /media/cdrom/VBoxLinuxAdditions.run --noxll
+
+sudo usermod -a -G vboxsf jpeck
+
+sudo usermod -a -G vboxsf www-data
+
+sudo a2enmod rewrite
+
+
+sudo nano -w /etc/apache2/sites-available/sandbox
+<VirtualHost *:80>
+  ServerName sandbox.dev
+  ServerAlias sandbox.dev
+  DocumentRoot /media/sf_sandbox/
+  
+  LogLevel info
+  ErrorLog ${APACHE_LOG_DIR}/sandbox.dev-error.log
+  CustomLog ${APACHE_LOG_DIR}/sandbox.dev-access.log combined
+
+  RewriteEngine On
+  RewriteLog ${APACHE_LOG_DIR}/sandbox.dev-rewrite.log
+  RewriteLogLevel 0
+</VirtualHost>
+
+sudo a2ensite sandbox
+
+sudo nano -w /etc/apache2/httpd.conf
+ServerName Development
+
+sudo nano -w /etc/php5/apache2/php.ini ->enable error logging
+error_log = /media/sf_sandbox/php_errors.log
+
+sudo nano -w /etc/mysql/my.cnf -- bind-address 0.0.0.0
+
+
+
+
+
