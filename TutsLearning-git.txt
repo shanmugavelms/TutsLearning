@@ -100,13 +100,17 @@ git fetch origin master
 git pull = git fetch + git merge
 
 
+git tag --list all tag
 
+git tag -l 'v1.4.2.*' --filtering tags
 
- 
+lightweight tag -- pointer to specific commit
+annotated tag -- more info
 
+git tag -a v1.0 -m 'my version'
 
+git show v1.0 - get info abt tag
 
+git push origin [tagname] -- for single tag
 
-
-
-
+git push origin --tags  -- for many tags
