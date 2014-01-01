@@ -121,4 +121,7 @@ git push origin --tags  -- for many tags
 fetching tags -- git fetch --tags or git fetch tagname
 
 
-updating tag -- git tag -f tagname
+git diff HEAD    ---Diff between HEAD and the working directory.
+git diff HEAD^   --- Diff between the direct ancestor of HEAD and the working directory.
+git diff --cached or the synonym git diff --staged --Diff between HEAD and the index.
+git diff - Diff between the index and the working directory.
