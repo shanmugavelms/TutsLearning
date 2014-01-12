@@ -1,0 +1,91 @@
+1) create a folder in windows eg :- sandbox in desktop
+
+2) go to path in windows - system32/drivers/etc/hosts ->  add 127.0.0.1 sandbox.dev
+
+3) Install VM
+
+4) select New in VM and create a virtual machine - sandbox
+
+	2048 MB RAM - varies to system config
+        Dynamically allocated
+        
+
+5) Goto VM settings -> network -> select NAT  -> click port forwarding
+
+6) add these rules  -> 
+
+        NAME  PROTOCOL HOST PORT  GUEST PORT 
+	http  tcp      8080       80 
+	mysql tcp      9306       3306 
+	ssh   tcp      2222       22
+
+7) click shared folders -> give folder path (sandbox in desktop) and check auto-mount
+
+8) Install ubuntu in VM
+
+	no encrypt home dir - degrades performance
+	select packages - open ssh and lamp stack
+
+9)  use putty to connect --> host - sandbox.dev --> port 2222 --> login
+
+10) Add an IP to the secondary adapter:
+	sudo vim /etc/network/interfaces
+	Add this to the bottom of the file:
+		auto eth1
+		iface eth1 inet static
+		address 192.168.56.101
+		netmask 255.255.255.0
+	Configure your local network adapter "VirtualBox Host-Only Network" with a similar configuration
+	IP Address: 192.168.56.1, Subnet Mask: 255.255.255.0 (Be sure to leave Default Gateway
+	blank, as you will lose internet access)
+	Save & Restart the VM
+
+11) upgrade and install packages -> sudo apt-get -q -y install build-essential module-assistant linux-headers-$(uname - r) dkms zip unzip
+
+12) installing virtual box guest additions 
+	
+	sudo mount /dev/cdrom /media/cdrom
+	sudo sh /media/cdrom/VBoxLinuxAdditions.run --noxll
+
+13)  configuring apache 
+
+	sudo usermod -a -G vboxsf <username>
+        sudo usermod -a -G vboxsf www-data
+        sudo a2enmod rewrite
+
+	
+	sudo nano -w /etc/apache2/sites-available/sandbox
+	<VirtualHost *:80>
+  
+		ServerName sandbox.dev
+  
+		ServerAlias sandbox.dev
+  
+		DocumentRoot /media/sf_sandbox/
+  
+  	
+		LogLevel info
+  
+		ErrorLog ${APACHE_LOG_DIR}/sandbox.dev-error.log
+  
+		CustomLog ${APACHE_LOG_DIR}/sandbox.dev-access.log combined
+
+  
+		RewriteEngine On
+  RewriteLog 		${APACHE_LOG_DIR}/sandbox.dev-rewrite.log
+  
+		RewriteLogLevel 0
+
+	</VirtualHost>
+
+	sudo a2ensite sandbox
+
+	sudo nano -w /etc/apache2/httpd.conf
+	ServerName Development
+
+	sudo nano -w /etc/php5/apache2/php.ini ->enable error logging
+	error_log = /media/sf_sandbox/php_errors.log
+
+14) config db
+
+	sudo nano -w /etc/mysql/my.cnf -- bind-address 0.0.0.0

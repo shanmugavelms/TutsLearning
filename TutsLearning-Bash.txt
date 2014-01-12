@@ -1,0 +1,45 @@
+Bash - Bourne Again Shell
+
+more pine.txt
+head pine.txt
+tail pine.txt
+
+echo ~-
+
+touch {apple,banana} - creating many files
+
+touch file_{1..1000} --- file_1 ....file_1000
+
+echo {1..100}
+
+echo {1..10..2}
+
+echo {1..10..3}
+
+ls | more 
+
+cp -v ----verbose prints result
+
+
+1 - stdout    2-stderr  > --redirecting
+
+& --both
+
+dev/null - null
+
+grep scott auth.log
+
+grep --color=auto scott auth.log
+
+grep -i break.in auth.log  | awk {'print $12'}
+
+
+./ -- to run a file
+
+
+$HOME  $PWD
+
+a=$(pwd) --- runs pwd and assign to a
+
+date + "%d-%m-%y"
+
